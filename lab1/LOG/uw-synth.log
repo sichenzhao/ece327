@@ -1,0 +1,12 @@
+INFO: Starting PRECISION_RTL for logic synthesis
+precision: Executing on platform: CentOS release 5.11 (Final) Kernel \r on an \m  Linux eceLinux1.uwaterloo.ca 2.6.18-404.el5 #1 SMP Tue Apr 7 12:42:54 EDT 2015 x86_64 x86_64 x86_64 GNU/Linux 
+precision: Setting MGC_HOME to /opt/Precision_Synthesis_2008a.47/Mgc_home ...
+
+INFO: generic-gate       netlist         written to uw_tmp/myflipflop_gate.vhd
+INFO: 
+INFO: ***********************************************
+INFO: *
+INFO: * uw-synth to DE2 was successful
+INFO: * log file stored in LOG/uw-synth.log
+INFO: *
+INFO: ***********************************************

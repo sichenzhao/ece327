@@ -1,0 +1,4 @@
+grep: write error: Bad file descriptor
+grep: write error: Bad file descriptor
+Assertion failure: [unhandlable oom] GlobalHelperThreadState::ensureInitialized, at /builddir/build/BUILD/firefox-38.0/mozilla-esr38/js/src/jscntxt.cpp:1184
+*: IA__g_object_notify: object class `MozContainer' has no property named `window'
