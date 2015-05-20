@@ -21,10 +21,10 @@ begin
   -- carry instantiation
   u_carry : entity work.carry(main)
     port map (
-    	i_x	=> i_a,
-	i_y	=> i_b,
-	i_cin	=> i_cin,
-	o_cout  => o_cout
+      i_x => i_a,
+      i_y => i_b,
+      i_cin => i_cin,
+      o_cout => o_cout
     );
 
 end architecture;

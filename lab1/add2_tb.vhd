@@ -13,50 +13,38 @@ begin
   
    uut : entity work.add2(main)
      port map (
-       i_a    => a,
-       i_b    => b,
-       i_cin  => cin,
-       o_sum  => sum,
-       o_cout => cout
+       a    => a,
+       b    => b,
+       cin  => cin,
+       sum  => sum,
+       cout => cout
      );
 
    -- insert VHDL testbench code here
    process
    begin
-    -- --------------------
-   	a(0) <= '0'; 
-	a(1) <= '0'; 
-	b(0) <= '0'; 
-	b(1) <= '0'; 
-	cin <='0';
-	wait for 10 ns;
-    -- --------------------
-   	a(0) <= '1'; 
-	a(1) <= '1'; 
-	b(0) <= '0'; 
-	b(1) <= '0'; 
-	cin <='0';
-	wait for 10 ns;
-    -- --------------------
-   	a(0) <= '1'; 
-	a(1) <= '0'; 
-	b(0) <= '1'; 
-	b(1) <= '0'; 
-	cin <='1';
-	wait for 10 ns;
-    -- --------------------
-   	a(0) <= '0'; 
-	a(1) <= '1'; 
-	b(0) <= '0'; 
-	b(1) <= '1'; 
-	cin <='1';
-	wait for 10 ns;
-    end process;	
-   
+   a(0) <= '0'; a(1) <= '0'; b(0) <='0'; b(1) <='0'; cin<='0';
+   wait for 10ns;
+   -- -------------------------
+   a(0) <='1'; a(1) <= '1'; b(0) <='0'; b(1) <= '0'; cin<='0';
+   wait for 10ns;
+   -- -------------------------
+   a(0) <='1'; a(1) <= '0'; b(0) <='1'; b(1) <='0'; cin<='1';
+   wait for 10ns;
+   -- -------------------------
+   a(0) <='0'; a(1) <= '1'; b(0) <='0'; b(1) <= '1'; cin<='1';
+   wait for 10ns;
+   -- -------------------------
+   end process;
 end main;
 
 -- question 4
 -- signal | output waveform description
--- sum(0)   0  1  1  1  
--- sum(1)   0  1  1  0
--- cout     0  0  0  1
+--   a(0) 0 1 1 0
+--   b(0) 0 0 1 0
+--   a(1) 0 1 0 1
+--   b(1) 0 0 0 1
+--   cin  0 0 1 1
+-- sum(0) 0 1 1 1    
+-- sum(1) 0 1 1 0     
+-- cout   0 0 0 1 

@@ -34,15 +34,13 @@ end architecture;
 
 -- question 2
 -- signal   | waveform description
--- a          0  1  0  0
--- b          0  0  0  0
--- cin        0  0  1  0
--- the_sum    0  1  1  0
+-- a       0 1 0
+-- b       0 0 0
+-- cin     0 0 1
+-- the_sum 0 1 1
 
 
 -- question 3
-  --insert answer here
-    -- After 30ns, the simulator will start the tb
-    -- process from start again, so on the rest of 
-    -- 100ns the waveform looks like the copy of 
-    -- waveforms in first 30ns.
+  --It will repeat itself 3 1/3 times with the same waveform.
+  --The process is repeated again after the 30ns is complete.
+
