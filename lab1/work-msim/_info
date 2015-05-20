@@ -181,99 +181,99 @@ Z31 Fmyflipflop.vhd
 l0
 L4
 VD<>cc]Rn?e04OJeLMHMe70
-!s100 I`>j=FzPm]1e1ma60PT>`2
 R10
 31
-!i10b 1
 Z32 !s108 1431704298.516788
 Z33 !s90 -93|+acc|-work|work-msim|myflipflop.vhd|
 Z34 !s107 myflipflop.vhd|
 R14
 R15
+!s100 I`>j=FzPm]1e1ma60PT>`2
+!i10b 1
 Amain
 R6
 R7
-Z35 DEx4 work 10 myflipflop 0 22 D<>cc]Rn?e04OJeLMHMe70
+DEx4 work 10 myflipflop 0 22 D<>cc]Rn?e04OJeLMHMe70
 l26
 L21
 VK=BWZZXF=3_MMf?4QcXM_3
-!s100 KD^MMZPgM1=N;dV:l<h;M3
 R10
 31
-!i10b 1
 R32
 R33
 R34
 R14
 R15
+!s100 KD^MMZPgM1=N;dV:l<h;M3
+!i10b 1
 Esum
-Z36 w1431522352
+Z35 w1431522352
 R6
 R7
 R4
-Z37 8sum.vhd
-Z38 Fsum.vhd
+Z36 8sum.vhd
+Z37 Fsum.vhd
 l0
 L4
 VaHIjSJFUeY]]>h18BV78?1
+!s100 8:ao_5=Q8kN?HG>]dHKC52
 R10
 31
-R11
-R12
-R13
+!i10b 1
+Z38 !s108 1432131644.719969
+Z39 !s90 -93|+acc|-work|work-msim|sum.vhd|sum_tb.vhd|
+Z40 !s107 sum_tb.vhd|sum.vhd|
 R14
 R15
-!s100 8:ao_5=Q8kN?HG>]dHKC52
-!i10b 1
 Amain
 R6
 R7
 R28
 l13
 L10
-V0bHa`En0d1b52RXhaTkZ93
+Z41 V0bHa`En0d1b52RXhaTkZ93
+Z42 !s100 <NSOzz6j9X:?bM[CE`K1C3
 R10
 31
-R11
-R12
-R13
+!i10b 1
+R38
+R39
+R40
 R14
 R15
-!s100 <NSOzz6j9X:?bM[CE`K1C3
-!i10b 1
 Esum_tb
-Z39 w1431524340
+Z43 w1431524700
 R6
 R7
 R4
-Z40 8sum_tb.vhd
-Z41 Fsum_tb.vhd
+Z44 8sum_tb.vhd
+Z45 Fsum_tb.vhd
 l0
 L4
 VBo3jM]AdGoNKdG`Wddd4A3
+!s100 a57V;C2RW2Z<1m^PdPn;V0
 R10
 31
-Z42 !s108 1431524354.370939
-Z43 !s90 -93|+acc|-work|work-msim|sum.vhd|sum_tb.vhd|
-Z44 !s107 sum_tb.vhd|sum.vhd|
+!i10b 1
+R38
+R39
+R40
 R14
 R15
-!s100 a57V;C2RW2Z<1m^PdPn;V0
-!i10b 1
 Amain
 R28
 R6
 R7
-DEx4 work 6 sum_tb 0 22 Bo3jM]AdGoNKdG`Wddd4A3
+Z46 DEx4 work 6 sum_tb 0 22 Bo3jM]AdGoNKdG`Wddd4A3
 l9
 L7
-VF=aFA`JS<ZY<RVXA;OIf;1
+Z47 VF=aFA`JS<ZY<RVXA;OIf;1
+Z48 !s100 S6Jj`KPUoHeIPRW_>PFa42
 R10
 31
-R42
-R43
-R44
+!i10b 1
+R38
+R39
+R40
 R14
 R15
-!s100 S6Jj`KPUoHeIPRW_>PFa42
-!i10b 1
