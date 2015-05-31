@@ -1,0 +1,9 @@
+add wave coef1
+add wave coef2
+add wave coef3
+add wave coef4
+add wave clk
+add wave i_data
+add wave o_data
+
+run 1000 ns

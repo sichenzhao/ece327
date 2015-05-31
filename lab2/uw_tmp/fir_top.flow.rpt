@@ -1,0 +1,117 @@
+Flow report for fir_top
+Sun May 31 15:49:26 2015
+Quartus II Version 10.1 Build 197 01/19/2011 Service Pack 1 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2011 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------------+
+; Flow Summary                                                                        ;
++------------------------------------+------------------------------------------------+
+; Flow Status                        ; Successful - Sun May 31 15:49:26 2015          ;
+; Quartus II Version                 ; 10.1 Build 197 01/19/2011 SP 1 SJ Full Version ;
+; Revision Name                      ; fir_top                                        ;
+; Top-level Entity Name              ; fir_top                                        ;
+; Family                             ; Cyclone II                                     ;
+; Total logic elements               ; 581 / 33,216 ( 2 % )                           ;
+;     Total combinational functions  ; 569 / 33,216 ( 2 % )                           ;
+;     Dedicated logic registers      ; 104 / 33,216 ( < 1 % )                         ;
+; Total registers                    ; 104                                            ;
+; Total pins                         ; 114 / 475 ( 24 % )                             ;
+; Total virtual pins                 ; 0                                              ;
+; Total memory bits                  ; 8,960 / 483,840 ( 2 % )                        ;
+; Embedded Multiplier 9-bit elements ; 0 / 70 ( 0 % )                                 ;
+; Total PLLs                         ; 1 / 4 ( 25 % )                                 ;
+; Device                             ; EP2C35F672C7                                   ;
+; Timing Models                      ; Final                                          ;
++------------------------------------+------------------------------------------------+
+
+
++-----------------------------------------+
+; Flow Settings                           ;
++-------------------+---------------------+
+; Option            ; Setting             ;
++-------------------+---------------------+
+; Start date & time ; 05/31/2015 15:48:46 ;
+; Main task         ; Compilation         ;
+; Revision Name     ; fir_top             ;
++-------------------+---------------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                  ;
++-----------------------+--------------------------------+---------------+-------------+------------+
+; Assignment Name       ; Value                          ; Default Value ; Entity Name ; Section Id ;
++-----------------------+--------------------------------+---------------+-------------+------------+
+; COMPILER_SIGNATURE_ID ; 88263145755048.143310172605928 ; --            ; --          ; --         ;
++-----------------------+--------------------------------+---------------+-------------+------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                        ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis ; 00:00:08     ; 1.0                     ; 274 MB              ; 00:00:02                           ;
+; Fitter               ; 00:00:08     ; 1.3                     ; 369 MB              ; 00:00:06                           ;
+; Assembler            ; 00:00:05     ; 1.0                     ; 302 MB              ; 00:00:02                           ;
+; EDA Netlist Writer   ; 00:00:03     ; 1.0                     ; 236 MB              ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:04     ; 1.0                     ; 236 MB              ; 00:00:01                           ;
+; Total                ; 00:00:28     ; --                      ; --                  ; 00:00:12                           ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++-----------------------------------------------------------------------------------+
+; Flow OS Summary                                                                   ;
++----------------------+------------------+-----------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
++----------------------+------------------+-----------+------------+----------------+
+; Analysis & Synthesis ; ECE-RTOS14       ; Windows 7 ; 6.1        ; x86_64         ;
+; Fitter               ; ECE-RTOS14       ; Windows 7 ; 6.1        ; x86_64         ;
+; Assembler            ; ECE-RTOS14       ; Windows 7 ; 6.1        ; x86_64         ;
+; EDA Netlist Writer   ; ECE-RTOS14       ; Windows 7 ; 6.1        ; x86_64         ;
+; EDA Netlist Writer   ; ECE-RTOS14       ; Windows 7 ; 6.1        ; x86_64         ;
++----------------------+------------------+-----------+------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map fir_top --source=fir_top_logic.edf --family=CycloneII
+quartus_fit fir_top --effort=fast --part=EP2C35F672C7
+quartus_asm fir_top
+quartus_eda fir_top --simulation=on --tool=modelsim --format=vhdl
+quartus_eda fir_top --simulation=on --tool=modelsim --format=verilog
+
+
+

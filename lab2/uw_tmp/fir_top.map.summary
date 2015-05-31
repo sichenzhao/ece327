@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Sun May 31 15:48:53 2015
+Quartus II Version : 10.1 Build 197 01/19/2011 SP 1 SJ Full Version
+Revision Name : fir_top
+Top-level Entity Name : fir_top
+Family : Cyclone II
+Total logic elements : 585
+    Total combinational functions : 569
+    Dedicated logic registers : 104
+Total registers : 104
+Total pins : 114
+Total virtual pins : 0
+Total memory bits : 8,960
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 1

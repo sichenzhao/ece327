@@ -1,0 +1,54 @@
+***********************************************
+Device Utilization for EP2C35F672C
+***********************************************
+Resource                Used    Avail   Utilization
+-----------------------------------------------
+IOs                     113     475      23.79%
+LUTs                    569     33216     1.71%
+Registers               104     33216     0.31%
+Memory Bits             8960    483340    1.85%
+DSP block 9-bit elems   0       70        0.00%
+
+-----------------------------------------------
+
+********************************************
+
+Library: work    Cell: fir_top    View: main
+
+********************************************
+
+  Cell                       Library  References     Total Area
+
+ GND                         cycloneii     1 x
+ NOT                         cycloneii     1 x
+ TRI                         cycloneii     1 x      1      1 TRIs
+ VCC                         cycloneii     1 x
+ add_9_0                     OPERATORS     1 x      9      9 LUTs
+ altpll                      cycloneii     1 x
+ altsyncram_12_6_64_2_0      OPERATORS     1 x
+ altsyncram_8_10_1024_2_0    OPERATORS     1 x
+ cycloneii_io                cycloneii   100 x      1    100 IOs
+ cycloneii_lcell_comb        cycloneii   105 x      1    105 LUTs
+ cycloneii_lcell_ff          cycloneii    46 x      1     46 Registers
+ fir                         work          1 x    342    342 LUTs
+ i2c_av_config_notri         work          1 x      0      0 LCs
+                                                   39     39 Registers
+                                                   94     94 LUTs
+ modgen_counter_10_0         OPERATORS     1 x     10     10 LUTs
+                                                   10     10 Registers
+ modgen_counter_9_0          OPERATORS     1 x      9      9 LUTs
+                                                    9      9 Registers
+
+ Number of ports :                     114
+ Number of nets :                      333
+ Number of instances :                 263
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of IOs :                       113
+ Number of LCs :                         0
+ Number of LUTs :                      569
+ Number of Memory Bits :              8960
+ Number of Registers :                 104
+ Number of TRIs :                        1
+ Number of accumulated instances :     815

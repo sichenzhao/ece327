@@ -1,0 +1,581 @@
+----------------
+; Command Info ;
+----------------
+Report Timing: Found 5 setup paths (5 violated).  Worst case slack is -14.177 
+
+Tcl Command:
+    report_timing -setup -file timing_chip_path.rpt -npaths 5 -detail path_only
+
+Options:
+    -setup 
+    -npaths 5 
+    -detail path_only 
+    -file {timing_chip_path.rpt} 
+
+Delay Model:
+    Slow Model
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Summary of Paths                                                                                                        ;
++---------+----------------+---------------+------------------+------------------+--------------+------------+------------+
+; Slack   ; From Node      ; To Node       ; Launch Clock     ; Latch Clock      ; Relationship ; Clock Skew ; Data Delay ;
++---------+----------------+---------------+------------------+------------------+--------------+------------+------------+
+; -14.177 ; low_pass_in_4_ ; audio_out_14_ ; aud_adclrck_dup0 ; aud_adclrck_dup0 ; 1.000        ; 0.001      ; 15.216     ;
+; -14.170 ; low_pass_in_4_ ; audio_out_14_ ; aud_adclrck_dup0 ; aud_adclrck_dup0 ; 1.000        ; 0.001      ; 15.209     ;
+; -14.167 ; low_pass_in_4_ ; audio_out_14_ ; aud_adclrck_dup0 ; aud_adclrck_dup0 ; 1.000        ; 0.001      ; 15.206     ;
+; -14.083 ; low_pass_in_1_ ; audio_out_14_ ; aud_adclrck_dup0 ; aud_adclrck_dup0 ; 1.000        ; 0.002      ; 15.123     ;
+; -14.076 ; low_pass_in_1_ ; audio_out_14_ ; aud_adclrck_dup0 ; aud_adclrck_dup0 ; 1.000        ; 0.002      ; 15.116     ;
++---------+----------------+---------------+------------------+------------------+--------------+------------+------------+
+
+Path #1: Setup slack is -14.177 (VIOLATED)
+===============================================================================
++-----------------------------------------+
+; Path Summary                            ;
++--------------------+--------------------+
+; Property           ; Value              ;
++--------------------+--------------------+
+; From Node          ; low_pass_in_4_     ;
+; To Node            ; audio_out_14_      ;
+; Launch Clock       ; aud_adclrck_dup0   ;
+; Latch Clock        ; aud_adclrck_dup0   ;
+; Data Arrival Time  ; 18.417             ;
+; Data Required Time ; 4.240              ;
+; Slack              ; -14.177 (VIOLATED) ;
++--------------------+--------------------+
+
++---------------------------------------------------------------------------------------+
+; Statistics                                                                            ;
++---------------------------+--------+-------+-------------+------------+-------+-------+
+; Property                  ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++---------------------------+--------+-------+-------------+------------+-------+-------+
+; Setup Relationship        ; 1.000  ;       ;             ;            ;       ;       ;
+; Clock Skew                ; 0.001  ;       ;             ;            ;       ;       ;
+; Data Delay                ; 15.216 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels    ;        ; 21    ;             ;            ;       ;       ;
+; Physical Delays           ;        ;       ;             ;            ;       ;       ;
+;  Arrival Path             ;        ;       ;             ;            ;       ;       ;
+;   Clock                   ;        ;       ;             ;            ;       ;       ;
+;    Clock Network (Lumped) ;        ; 1     ; 3.201       ; 100        ; 3.201 ; 3.201 ;
+;   Data                    ;        ;       ;             ;            ;       ;       ;
+;    IC                     ;        ; 22    ; 7.812       ; 51         ; 0.000 ; 1.422 ;
+;    Cell                   ;        ; 23    ; 7.127       ; 46         ; 0.000 ; 0.517 ;
+;    uTco                   ;        ; 1     ; 0.277       ; 1          ; 0.277 ; 0.277 ;
+;  Required Path            ;        ;       ;             ;            ;       ;       ;
+;   Clock                   ;        ;       ;             ;            ;       ;       ;
+;    Clock Network (Lumped) ;        ; 1     ; 3.202       ; 100        ; 3.202 ; 3.202 ;
++---------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                           ;
++----------+---------+----+------+--------+--------------------+--------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                      ;
++----------+---------+----+------+--------+--------------------+--------------------------------------------------------------+
+; 0.000    ; 0.000   ;    ;      ;        ;                    ; launch edge time                                             ;
+; 3.201    ; 3.201   ;    ;      ;        ;                    ; clock path                                                   ;
+;   3.201  ;   3.201 ; R  ;      ;        ;                    ; clock network delay                                          ;
+; 18.417   ; 15.216  ;    ;      ;        ;                    ; data path                                                    ;
+;   3.478  ;   0.277 ;    ; uTco ; 1      ; LCFF_X24_Y18_N11   ; low_pass_in_4_                                               ;
+;   3.478  ;   0.000 ; FF ; CELL ; 16     ; LCFF_X24_Y18_N11   ; reg_low_pass_in_4_|regout                                    ;
+;   4.786  ;   1.308 ; FF ; IC   ; 1      ; LCCOMB_X23_Y20_N6  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52936|dataa   ;
+;   5.303  ;   0.517 ; FR ; CELL ; 1      ; LCCOMB_X23_Y20_N6  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52936|cout    ;
+;   5.303  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X23_Y20_N8  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52935|cin     ;
+;   5.383  ;   0.080 ; RF ; CELL ; 1      ; LCCOMB_X23_Y20_N8  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52935|cout    ;
+;   5.383  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X23_Y20_N10 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52934|cin     ;
+;   5.463  ;   0.080 ; FR ; CELL ; 1      ; LCCOMB_X23_Y20_N10 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52934|cout    ;
+;   5.463  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X23_Y20_N12 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52933|cin     ;
+;   5.543  ;   0.080 ; RF ; CELL ; 1      ; LCCOMB_X23_Y20_N12 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52933|cout    ;
+;   5.543  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X23_Y20_N14 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52932|cin     ;
+;   5.717  ;   0.174 ; FR ; CELL ; 1      ; LCCOMB_X23_Y20_N14 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52932|cout    ;
+;   5.717  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X23_Y20_N16 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52931|cin     ;
+;   5.797  ;   0.080 ; RF ; CELL ; 1      ; LCCOMB_X23_Y20_N16 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52931|cout    ;
+;   5.797  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X23_Y20_N18 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52930|cin     ;
+;   5.877  ;   0.080 ; FR ; CELL ; 1      ; LCCOMB_X23_Y20_N18 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52930|cout    ;
+;   5.877  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X23_Y20_N20 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52929|cin     ;
+;   6.335  ;   0.458 ; RR ; CELL ; 4      ; LCCOMB_X23_Y20_N20 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52929|combout ;
+;   7.757  ;   1.422 ; RR ; IC   ; 2      ; LCCOMB_X24_Y19_N12 ; low_pass|modgen_add_11|ix2247z52933|dataa                    ;
+;   8.274  ;   0.517 ; RR ; CELL ; 1      ; LCCOMB_X24_Y19_N12 ; low_pass|modgen_add_11|ix2247z52933|cout                     ;
+;   8.274  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X24_Y19_N14 ; low_pass|modgen_add_11|ix2247z52932|cin                      ;
+;   8.448  ;   0.174 ; RF ; CELL ; 1      ; LCCOMB_X24_Y19_N14 ; low_pass|modgen_add_11|ix2247z52932|cout                     ;
+;   8.448  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X24_Y19_N16 ; low_pass|modgen_add_11|ix2247z52931|cin                      ;
+;   8.528  ;   0.080 ; FR ; CELL ; 1      ; LCCOMB_X24_Y19_N16 ; low_pass|modgen_add_11|ix2247z52931|cout                     ;
+;   8.528  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X24_Y19_N18 ; low_pass|modgen_add_11|ix2247z52930|cin                      ;
+;   8.986  ;   0.458 ; RR ; CELL ; 1      ; LCCOMB_X24_Y19_N18 ; low_pass|modgen_add_11|ix2247z52930|combout                  ;
+;   9.517  ;   0.531 ; RR ; IC   ; 2      ; LCCOMB_X25_Y19_N18 ; low_pass|modgen_add_12|ix2247z52930|datab                    ;
+;   10.012 ;   0.495 ; RF ; CELL ; 1      ; LCCOMB_X25_Y19_N18 ; low_pass|modgen_add_12|ix2247z52930|cout                     ;
+;   10.012 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X25_Y19_N20 ; low_pass|modgen_add_12|ix2247z52929|cin                      ;
+;   10.470 ;   0.458 ; FF ; CELL ; 1      ; LCCOMB_X25_Y19_N20 ; low_pass|modgen_add_12|ix2247z52929|combout                  ;
+;   11.888 ;   1.418 ; FF ; IC   ; 2      ; LCCOMB_X28_Y19_N20 ; low_pass|modgen_add_13|ix2247z52929|dataa                    ;
+;   12.405 ;   0.517 ; FF ; CELL ; 1      ; LCCOMB_X28_Y19_N20 ; low_pass|modgen_add_13|ix2247z52929|cout                     ;
+;   12.405 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X28_Y19_N22 ; low_pass|modgen_add_13|ix2247z52928|cin                      ;
+;   12.863 ;   0.458 ; FF ; CELL ; 1      ; LCCOMB_X28_Y19_N22 ; low_pass|modgen_add_13|ix2247z52928|combout                  ;
+;   13.704 ;   0.841 ; FF ; IC   ; 2      ; LCCOMB_X27_Y19_N22 ; low_pass|modgen_add_14|ix2247z52928|dataa                    ;
+;   14.221 ;   0.517 ; FR ; CELL ; 1      ; LCCOMB_X27_Y19_N22 ; low_pass|modgen_add_14|ix2247z52928|cout                     ;
+;   14.221 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X27_Y19_N24 ; low_pass|modgen_add_14|ix2247z52927|cin                      ;
+;   14.301 ;   0.080 ; RF ; CELL ; 1      ; LCCOMB_X27_Y19_N24 ; low_pass|modgen_add_14|ix2247z52927|cout                     ;
+;   14.301 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X27_Y19_N26 ; low_pass|modgen_add_14|ix2247z52926|cin                      ;
+;   14.759 ;   0.458 ; FF ; CELL ; 1      ; LCCOMB_X27_Y19_N26 ; low_pass|modgen_add_14|ix2247z52926|combout                  ;
+;   15.909 ;   1.150 ; FF ; IC   ; 2      ; LCCOMB_X27_Y21_N26 ; low_pass|modgen_add_15|ix2247z52926|datab                    ;
+;   16.404 ;   0.495 ; FR ; CELL ; 1      ; LCCOMB_X27_Y21_N26 ; low_pass|modgen_add_15|ix2247z52926|cout                     ;
+;   16.404 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X27_Y21_N28 ; low_pass|modgen_add_15|ix2247z52925|cin                      ;
+;   16.862 ;   0.458 ; RR ; CELL ; 1      ; LCCOMB_X27_Y21_N28 ; low_pass|modgen_add_15|ix2247z52925|combout                  ;
+;   18.004 ;   1.142 ; RR ; IC   ; 1      ; LCFF_X27_Y20_N5    ; reg_audio_out_14_|sdata                                      ;
+;   18.417 ;   0.413 ; RR ; CELL ; 1      ; LCFF_X27_Y20_N5    ; audio_out_14_                                                ;
++----------+---------+----+------+--------+--------------------+--------------------------------------------------------------+
+
++--------------------------------------------------------------------------------+
+; Data Required Path                                                             ;
++---------+---------+----+------+--------+-----------------+---------------------+
+; Total   ; Incr    ; RF ; Type ; Fanout ; Location        ; Element             ;
++---------+---------+----+------+--------+-----------------+---------------------+
+; 1.000   ; 1.000   ;    ;      ;        ;                 ; latch edge time     ;
+; 4.202   ; 3.202   ;    ;      ;        ;                 ; clock path          ;
+;   4.202 ;   3.202 ; R  ;      ;        ;                 ; clock network delay ;
+; 4.240   ; 0.038   ;    ; uTsu ; 1      ; LCFF_X27_Y20_N5 ; audio_out_14_       ;
++---------+---------+----+------+--------+-----------------+---------------------+
+
+
+Path #2: Setup slack is -14.170 (VIOLATED)
+===============================================================================
++-----------------------------------------+
+; Path Summary                            ;
++--------------------+--------------------+
+; Property           ; Value              ;
++--------------------+--------------------+
+; From Node          ; low_pass_in_4_     ;
+; To Node            ; audio_out_14_      ;
+; Launch Clock       ; aud_adclrck_dup0   ;
+; Latch Clock        ; aud_adclrck_dup0   ;
+; Data Arrival Time  ; 18.410             ;
+; Data Required Time ; 4.240              ;
+; Slack              ; -14.170 (VIOLATED) ;
++--------------------+--------------------+
+
++---------------------------------------------------------------------------------------+
+; Statistics                                                                            ;
++---------------------------+--------+-------+-------------+------------+-------+-------+
+; Property                  ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++---------------------------+--------+-------+-------------+------------+-------+-------+
+; Setup Relationship        ; 1.000  ;       ;             ;            ;       ;       ;
+; Clock Skew                ; 0.001  ;       ;             ;            ;       ;       ;
+; Data Delay                ; 15.209 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels    ;        ; 21    ;             ;            ;       ;       ;
+; Physical Delays           ;        ;       ;             ;            ;       ;       ;
+;  Arrival Path             ;        ;       ;             ;            ;       ;       ;
+;   Clock                   ;        ;       ;             ;            ;       ;       ;
+;    Clock Network (Lumped) ;        ; 1     ; 3.201       ; 100        ; 3.201 ; 3.201 ;
+;   Data                    ;        ;       ;             ;            ;       ;       ;
+;    IC                     ;        ; 22    ; 7.805       ; 51         ; 0.000 ; 1.422 ;
+;    Cell                   ;        ; 23    ; 7.127       ; 46         ; 0.000 ; 0.517 ;
+;    uTco                   ;        ; 1     ; 0.277       ; 1          ; 0.277 ; 0.277 ;
+;  Required Path            ;        ;       ;             ;            ;       ;       ;
+;   Clock                   ;        ;       ;             ;            ;       ;       ;
+;    Clock Network (Lumped) ;        ; 1     ; 3.202       ; 100        ; 3.202 ; 3.202 ;
++---------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                           ;
++----------+---------+----+------+--------+--------------------+--------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                      ;
++----------+---------+----+------+--------+--------------------+--------------------------------------------------------------+
+; 0.000    ; 0.000   ;    ;      ;        ;                    ; launch edge time                                             ;
+; 3.201    ; 3.201   ;    ;      ;        ;                    ; clock path                                                   ;
+;   3.201  ;   3.201 ; R  ;      ;        ;                    ; clock network delay                                          ;
+; 18.410   ; 15.209  ;    ;      ;        ;                    ; data path                                                    ;
+;   3.478  ;   0.277 ;    ; uTco ; 1      ; LCFF_X24_Y18_N11   ; low_pass_in_4_                                               ;
+;   3.478  ;   0.000 ; RR ; CELL ; 16     ; LCFF_X24_Y18_N11   ; reg_low_pass_in_4_|regout                                    ;
+;   4.786  ;   1.308 ; RR ; IC   ; 1      ; LCCOMB_X23_Y20_N6  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52936|dataa   ;
+;   5.303  ;   0.517 ; RF ; CELL ; 1      ; LCCOMB_X23_Y20_N6  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52936|cout    ;
+;   5.303  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X23_Y20_N8  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52935|cin     ;
+;   5.383  ;   0.080 ; FR ; CELL ; 1      ; LCCOMB_X23_Y20_N8  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52935|cout    ;
+;   5.383  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X23_Y20_N10 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52934|cin     ;
+;   5.463  ;   0.080 ; RF ; CELL ; 1      ; LCCOMB_X23_Y20_N10 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52934|cout    ;
+;   5.463  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X23_Y20_N12 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52933|cin     ;
+;   5.543  ;   0.080 ; FR ; CELL ; 1      ; LCCOMB_X23_Y20_N12 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52933|cout    ;
+;   5.543  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X23_Y20_N14 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52932|cin     ;
+;   5.717  ;   0.174 ; RF ; CELL ; 1      ; LCCOMB_X23_Y20_N14 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52932|cout    ;
+;   5.717  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X23_Y20_N16 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52931|cin     ;
+;   5.797  ;   0.080 ; FR ; CELL ; 1      ; LCCOMB_X23_Y20_N16 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52931|cout    ;
+;   5.797  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X23_Y20_N18 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52930|cin     ;
+;   5.877  ;   0.080 ; RF ; CELL ; 1      ; LCCOMB_X23_Y20_N18 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52930|cout    ;
+;   5.877  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X23_Y20_N20 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52929|cin     ;
+;   6.335  ;   0.458 ; FF ; CELL ; 4      ; LCCOMB_X23_Y20_N20 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52929|combout ;
+;   7.757  ;   1.422 ; FF ; IC   ; 2      ; LCCOMB_X24_Y19_N12 ; low_pass|modgen_add_11|ix2247z52933|dataa                    ;
+;   8.274  ;   0.517 ; FF ; CELL ; 1      ; LCCOMB_X24_Y19_N12 ; low_pass|modgen_add_11|ix2247z52933|cout                     ;
+;   8.274  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X24_Y19_N14 ; low_pass|modgen_add_11|ix2247z52932|cin                      ;
+;   8.448  ;   0.174 ; FR ; CELL ; 1      ; LCCOMB_X24_Y19_N14 ; low_pass|modgen_add_11|ix2247z52932|cout                     ;
+;   8.448  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X24_Y19_N16 ; low_pass|modgen_add_11|ix2247z52931|cin                      ;
+;   8.906  ;   0.458 ; RR ; CELL ; 1      ; LCCOMB_X24_Y19_N16 ; low_pass|modgen_add_11|ix2247z52931|combout                  ;
+;   9.430  ;   0.524 ; RR ; IC   ; 2      ; LCCOMB_X25_Y19_N16 ; low_pass|modgen_add_12|ix2247z52931|datab                    ;
+;   9.925  ;   0.495 ; RR ; CELL ; 1      ; LCCOMB_X25_Y19_N16 ; low_pass|modgen_add_12|ix2247z52931|cout                     ;
+;   9.925  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X25_Y19_N18 ; low_pass|modgen_add_12|ix2247z52930|cin                      ;
+;   10.005 ;   0.080 ; RF ; CELL ; 1      ; LCCOMB_X25_Y19_N18 ; low_pass|modgen_add_12|ix2247z52930|cout                     ;
+;   10.005 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X25_Y19_N20 ; low_pass|modgen_add_12|ix2247z52929|cin                      ;
+;   10.463 ;   0.458 ; FF ; CELL ; 1      ; LCCOMB_X25_Y19_N20 ; low_pass|modgen_add_12|ix2247z52929|combout                  ;
+;   11.881 ;   1.418 ; FF ; IC   ; 2      ; LCCOMB_X28_Y19_N20 ; low_pass|modgen_add_13|ix2247z52929|dataa                    ;
+;   12.398 ;   0.517 ; FF ; CELL ; 1      ; LCCOMB_X28_Y19_N20 ; low_pass|modgen_add_13|ix2247z52929|cout                     ;
+;   12.398 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X28_Y19_N22 ; low_pass|modgen_add_13|ix2247z52928|cin                      ;
+;   12.856 ;   0.458 ; FF ; CELL ; 1      ; LCCOMB_X28_Y19_N22 ; low_pass|modgen_add_13|ix2247z52928|combout                  ;
+;   13.697 ;   0.841 ; FF ; IC   ; 2      ; LCCOMB_X27_Y19_N22 ; low_pass|modgen_add_14|ix2247z52928|dataa                    ;
+;   14.214 ;   0.517 ; FR ; CELL ; 1      ; LCCOMB_X27_Y19_N22 ; low_pass|modgen_add_14|ix2247z52928|cout                     ;
+;   14.214 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X27_Y19_N24 ; low_pass|modgen_add_14|ix2247z52927|cin                      ;
+;   14.294 ;   0.080 ; RF ; CELL ; 1      ; LCCOMB_X27_Y19_N24 ; low_pass|modgen_add_14|ix2247z52927|cout                     ;
+;   14.294 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X27_Y19_N26 ; low_pass|modgen_add_14|ix2247z52926|cin                      ;
+;   14.752 ;   0.458 ; FF ; CELL ; 1      ; LCCOMB_X27_Y19_N26 ; low_pass|modgen_add_14|ix2247z52926|combout                  ;
+;   15.902 ;   1.150 ; FF ; IC   ; 2      ; LCCOMB_X27_Y21_N26 ; low_pass|modgen_add_15|ix2247z52926|datab                    ;
+;   16.397 ;   0.495 ; FR ; CELL ; 1      ; LCCOMB_X27_Y21_N26 ; low_pass|modgen_add_15|ix2247z52926|cout                     ;
+;   16.397 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X27_Y21_N28 ; low_pass|modgen_add_15|ix2247z52925|cin                      ;
+;   16.855 ;   0.458 ; RR ; CELL ; 1      ; LCCOMB_X27_Y21_N28 ; low_pass|modgen_add_15|ix2247z52925|combout                  ;
+;   17.997 ;   1.142 ; RR ; IC   ; 1      ; LCFF_X27_Y20_N5    ; reg_audio_out_14_|sdata                                      ;
+;   18.410 ;   0.413 ; RR ; CELL ; 1      ; LCFF_X27_Y20_N5    ; audio_out_14_                                                ;
++----------+---------+----+------+--------+--------------------+--------------------------------------------------------------+
+
++--------------------------------------------------------------------------------+
+; Data Required Path                                                             ;
++---------+---------+----+------+--------+-----------------+---------------------+
+; Total   ; Incr    ; RF ; Type ; Fanout ; Location        ; Element             ;
++---------+---------+----+------+--------+-----------------+---------------------+
+; 1.000   ; 1.000   ;    ;      ;        ;                 ; latch edge time     ;
+; 4.202   ; 3.202   ;    ;      ;        ;                 ; clock path          ;
+;   4.202 ;   3.202 ; R  ;      ;        ;                 ; clock network delay ;
+; 4.240   ; 0.038   ;    ; uTsu ; 1      ; LCFF_X27_Y20_N5 ; audio_out_14_       ;
++---------+---------+----+------+--------+-----------------+---------------------+
+
+
+Path #3: Setup slack is -14.167 (VIOLATED)
+===============================================================================
++-----------------------------------------+
+; Path Summary                            ;
++--------------------+--------------------+
+; Property           ; Value              ;
++--------------------+--------------------+
+; From Node          ; low_pass_in_4_     ;
+; To Node            ; audio_out_14_      ;
+; Launch Clock       ; aud_adclrck_dup0   ;
+; Latch Clock        ; aud_adclrck_dup0   ;
+; Data Arrival Time  ; 18.407             ;
+; Data Required Time ; 4.240              ;
+; Slack              ; -14.167 (VIOLATED) ;
++--------------------+--------------------+
+
++---------------------------------------------------------------------------------------+
+; Statistics                                                                            ;
++---------------------------+--------+-------+-------------+------------+-------+-------+
+; Property                  ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++---------------------------+--------+-------+-------------+------------+-------+-------+
+; Setup Relationship        ; 1.000  ;       ;             ;            ;       ;       ;
+; Clock Skew                ; 0.001  ;       ;             ;            ;       ;       ;
+; Data Delay                ; 15.206 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels    ;        ; 21    ;             ;            ;       ;       ;
+; Physical Delays           ;        ;       ;             ;            ;       ;       ;
+;  Arrival Path             ;        ;       ;             ;            ;       ;       ;
+;   Clock                   ;        ;       ;             ;            ;       ;       ;
+;    Clock Network (Lumped) ;        ; 1     ; 3.201       ; 100        ; 3.201 ; 3.201 ;
+;   Data                    ;        ;       ;             ;            ;       ;       ;
+;    IC                     ;        ; 22    ; 7.771       ; 51         ; 0.000 ; 1.422 ;
+;    Cell                   ;        ; 23    ; 7.158       ; 47         ; 0.000 ; 0.620 ;
+;    uTco                   ;        ; 1     ; 0.277       ; 1          ; 0.277 ; 0.277 ;
+;  Required Path            ;        ;       ;             ;            ;       ;       ;
+;   Clock                   ;        ;       ;             ;            ;       ;       ;
+;    Clock Network (Lumped) ;        ; 1     ; 3.202       ; 100        ; 3.202 ; 3.202 ;
++---------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                           ;
++----------+---------+----+------+--------+--------------------+--------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                      ;
++----------+---------+----+------+--------+--------------------+--------------------------------------------------------------+
+; 0.000    ; 0.000   ;    ;      ;        ;                    ; launch edge time                                             ;
+; 3.201    ; 3.201   ;    ;      ;        ;                    ; clock path                                                   ;
+;   3.201  ;   3.201 ; R  ;      ;        ;                    ; clock network delay                                          ;
+; 18.407   ; 15.206  ;    ;      ;        ;                    ; data path                                                    ;
+;   3.478  ;   0.277 ;    ; uTco ; 1      ; LCFF_X24_Y18_N11   ; low_pass_in_4_                                               ;
+;   3.478  ;   0.000 ; FF ; CELL ; 16     ; LCFF_X24_Y18_N11   ; reg_low_pass_in_4_|regout                                    ;
+;   4.786  ;   1.308 ; FF ; IC   ; 1      ; LCCOMB_X23_Y20_N6  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52936|dataa   ;
+;   5.303  ;   0.517 ; FR ; CELL ; 1      ; LCCOMB_X23_Y20_N6  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52936|cout    ;
+;   5.303  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X23_Y20_N8  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52935|cin     ;
+;   5.383  ;   0.080 ; RF ; CELL ; 1      ; LCCOMB_X23_Y20_N8  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52935|cout    ;
+;   5.383  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X23_Y20_N10 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52934|cin     ;
+;   5.463  ;   0.080 ; FR ; CELL ; 1      ; LCCOMB_X23_Y20_N10 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52934|cout    ;
+;   5.463  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X23_Y20_N12 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52933|cin     ;
+;   5.543  ;   0.080 ; RF ; CELL ; 1      ; LCCOMB_X23_Y20_N12 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52933|cout    ;
+;   5.543  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X23_Y20_N14 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52932|cin     ;
+;   5.717  ;   0.174 ; FR ; CELL ; 1      ; LCCOMB_X23_Y20_N14 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52932|cout    ;
+;   5.717  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X23_Y20_N16 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52931|cin     ;
+;   5.797  ;   0.080 ; RF ; CELL ; 1      ; LCCOMB_X23_Y20_N16 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52931|cout    ;
+;   5.797  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X23_Y20_N18 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52930|cin     ;
+;   5.877  ;   0.080 ; FR ; CELL ; 1      ; LCCOMB_X23_Y20_N18 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52930|cout    ;
+;   5.877  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X23_Y20_N20 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52929|cin     ;
+;   6.335  ;   0.458 ; RR ; CELL ; 4      ; LCCOMB_X23_Y20_N20 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52929|combout ;
+;   7.757  ;   1.422 ; RR ; IC   ; 2      ; LCCOMB_X24_Y19_N12 ; low_pass|modgen_add_11|ix2247z52933|dataa                    ;
+;   8.274  ;   0.517 ; RR ; CELL ; 1      ; LCCOMB_X24_Y19_N12 ; low_pass|modgen_add_11|ix2247z52933|cout                     ;
+;   8.274  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X24_Y19_N14 ; low_pass|modgen_add_11|ix2247z52932|cin                      ;
+;   8.732  ;   0.458 ; RR ; CELL ; 1      ; LCCOMB_X24_Y19_N14 ; low_pass|modgen_add_11|ix2247z52932|combout                  ;
+;   9.222  ;   0.490 ; RR ; IC   ; 2      ; LCCOMB_X25_Y19_N14 ; low_pass|modgen_add_12|ix2247z52932|dataa                    ;
+;   9.842  ;   0.620 ; RF ; CELL ; 1      ; LCCOMB_X25_Y19_N14 ; low_pass|modgen_add_12|ix2247z52932|cout                     ;
+;   9.842  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X25_Y19_N16 ; low_pass|modgen_add_12|ix2247z52931|cin                      ;
+;   9.922  ;   0.080 ; FR ; CELL ; 1      ; LCCOMB_X25_Y19_N16 ; low_pass|modgen_add_12|ix2247z52931|cout                     ;
+;   9.922  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X25_Y19_N18 ; low_pass|modgen_add_12|ix2247z52930|cin                      ;
+;   10.002 ;   0.080 ; RF ; CELL ; 1      ; LCCOMB_X25_Y19_N18 ; low_pass|modgen_add_12|ix2247z52930|cout                     ;
+;   10.002 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X25_Y19_N20 ; low_pass|modgen_add_12|ix2247z52929|cin                      ;
+;   10.460 ;   0.458 ; FF ; CELL ; 1      ; LCCOMB_X25_Y19_N20 ; low_pass|modgen_add_12|ix2247z52929|combout                  ;
+;   11.878 ;   1.418 ; FF ; IC   ; 2      ; LCCOMB_X28_Y19_N20 ; low_pass|modgen_add_13|ix2247z52929|dataa                    ;
+;   12.395 ;   0.517 ; FF ; CELL ; 1      ; LCCOMB_X28_Y19_N20 ; low_pass|modgen_add_13|ix2247z52929|cout                     ;
+;   12.395 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X28_Y19_N22 ; low_pass|modgen_add_13|ix2247z52928|cin                      ;
+;   12.853 ;   0.458 ; FF ; CELL ; 1      ; LCCOMB_X28_Y19_N22 ; low_pass|modgen_add_13|ix2247z52928|combout                  ;
+;   13.694 ;   0.841 ; FF ; IC   ; 2      ; LCCOMB_X27_Y19_N22 ; low_pass|modgen_add_14|ix2247z52928|dataa                    ;
+;   14.211 ;   0.517 ; FR ; CELL ; 1      ; LCCOMB_X27_Y19_N22 ; low_pass|modgen_add_14|ix2247z52928|cout                     ;
+;   14.211 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X27_Y19_N24 ; low_pass|modgen_add_14|ix2247z52927|cin                      ;
+;   14.291 ;   0.080 ; RF ; CELL ; 1      ; LCCOMB_X27_Y19_N24 ; low_pass|modgen_add_14|ix2247z52927|cout                     ;
+;   14.291 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X27_Y19_N26 ; low_pass|modgen_add_14|ix2247z52926|cin                      ;
+;   14.749 ;   0.458 ; FF ; CELL ; 1      ; LCCOMB_X27_Y19_N26 ; low_pass|modgen_add_14|ix2247z52926|combout                  ;
+;   15.899 ;   1.150 ; FF ; IC   ; 2      ; LCCOMB_X27_Y21_N26 ; low_pass|modgen_add_15|ix2247z52926|datab                    ;
+;   16.394 ;   0.495 ; FR ; CELL ; 1      ; LCCOMB_X27_Y21_N26 ; low_pass|modgen_add_15|ix2247z52926|cout                     ;
+;   16.394 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X27_Y21_N28 ; low_pass|modgen_add_15|ix2247z52925|cin                      ;
+;   16.852 ;   0.458 ; RR ; CELL ; 1      ; LCCOMB_X27_Y21_N28 ; low_pass|modgen_add_15|ix2247z52925|combout                  ;
+;   17.994 ;   1.142 ; RR ; IC   ; 1      ; LCFF_X27_Y20_N5    ; reg_audio_out_14_|sdata                                      ;
+;   18.407 ;   0.413 ; RR ; CELL ; 1      ; LCFF_X27_Y20_N5    ; audio_out_14_                                                ;
++----------+---------+----+------+--------+--------------------+--------------------------------------------------------------+
+
++--------------------------------------------------------------------------------+
+; Data Required Path                                                             ;
++---------+---------+----+------+--------+-----------------+---------------------+
+; Total   ; Incr    ; RF ; Type ; Fanout ; Location        ; Element             ;
++---------+---------+----+------+--------+-----------------+---------------------+
+; 1.000   ; 1.000   ;    ;      ;        ;                 ; latch edge time     ;
+; 4.202   ; 3.202   ;    ;      ;        ;                 ; clock path          ;
+;   4.202 ;   3.202 ; R  ;      ;        ;                 ; clock network delay ;
+; 4.240   ; 0.038   ;    ; uTsu ; 1      ; LCFF_X27_Y20_N5 ; audio_out_14_       ;
++---------+---------+----+------+--------+-----------------+---------------------+
+
+
+Path #4: Setup slack is -14.083 (VIOLATED)
+===============================================================================
++-----------------------------------------+
+; Path Summary                            ;
++--------------------+--------------------+
+; Property           ; Value              ;
++--------------------+--------------------+
+; From Node          ; low_pass_in_1_     ;
+; To Node            ; audio_out_14_      ;
+; Launch Clock       ; aud_adclrck_dup0   ;
+; Latch Clock        ; aud_adclrck_dup0   ;
+; Data Arrival Time  ; 18.323             ;
+; Data Required Time ; 4.240              ;
+; Slack              ; -14.083 (VIOLATED) ;
++--------------------+--------------------+
+
++---------------------------------------------------------------------------------------+
+; Statistics                                                                            ;
++---------------------------+--------+-------+-------------+------------+-------+-------+
+; Property                  ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++---------------------------+--------+-------+-------------+------------+-------+-------+
+; Setup Relationship        ; 1.000  ;       ;             ;            ;       ;       ;
+; Clock Skew                ; 0.002  ;       ;             ;            ;       ;       ;
+; Data Delay                ; 15.123 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels    ;        ; 24    ;             ;            ;       ;       ;
+; Physical Delays           ;        ;       ;             ;            ;       ;       ;
+;  Arrival Path             ;        ;       ;             ;            ;       ;       ;
+;   Clock                   ;        ;       ;             ;            ;       ;       ;
+;    Clock Network (Lumped) ;        ; 1     ; 3.200       ; 100        ; 3.200 ; 3.200 ;
+;   Data                    ;        ;       ;             ;            ;       ;       ;
+;    IC                     ;        ; 25    ; 7.479       ; 49         ; 0.000 ; 1.422 ;
+;    Cell                   ;        ; 26    ; 7.367       ; 48         ; 0.000 ; 0.517 ;
+;    uTco                   ;        ; 1     ; 0.277       ; 1          ; 0.277 ; 0.277 ;
+;  Required Path            ;        ;       ;             ;            ;       ;       ;
+;   Clock                   ;        ;       ;             ;            ;       ;       ;
+;    Clock Network (Lumped) ;        ; 1     ; 3.202       ; 100        ; 3.202 ; 3.202 ;
++---------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                           ;
++----------+---------+----+------+--------+--------------------+--------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                      ;
++----------+---------+----+------+--------+--------------------+--------------------------------------------------------------+
+; 0.000    ; 0.000   ;    ;      ;        ;                    ; launch edge time                                             ;
+; 3.200    ; 3.200   ;    ;      ;        ;                    ; clock path                                                   ;
+;   3.200  ;   3.200 ; R  ;      ;        ;                    ; clock network delay                                          ;
+; 18.323   ; 15.123  ;    ;      ;        ;                    ; data path                                                    ;
+;   3.477  ;   0.277 ;    ; uTco ; 1      ; LCFF_X23_Y18_N3    ; low_pass_in_1_                                               ;
+;   3.477  ;   0.000 ; FF ; CELL ; 11     ; LCFF_X23_Y18_N3    ; reg_low_pass_in_1_|regout                                    ;
+;   4.452  ;   0.975 ; FF ; IC   ; 1      ; LCCOMB_X23_Y20_N0  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52939|dataa   ;
+;   4.969  ;   0.517 ; FF ; CELL ; 1      ; LCCOMB_X23_Y20_N0  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52939|cout    ;
+;   4.969  ;   0.000 ; FF ; IC   ; 1      ; LCCOMB_X23_Y20_N2  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52938|cin     ;
+;   5.049  ;   0.080 ; FR ; CELL ; 1      ; LCCOMB_X23_Y20_N2  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52938|cout    ;
+;   5.049  ;   0.000 ; RR ; IC   ; 1      ; LCCOMB_X23_Y20_N4  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52937|cin     ;
+;   5.129  ;   0.080 ; RF ; CELL ; 1      ; LCCOMB_X23_Y20_N4  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52937|cout    ;
+;   5.129  ;   0.000 ; FF ; IC   ; 1      ; LCCOMB_X23_Y20_N6  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52936|cin     ;
+;   5.209  ;   0.080 ; FR ; CELL ; 1      ; LCCOMB_X23_Y20_N6  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52936|cout    ;
+;   5.209  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X23_Y20_N8  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52935|cin     ;
+;   5.289  ;   0.080 ; RF ; CELL ; 1      ; LCCOMB_X23_Y20_N8  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52935|cout    ;
+;   5.289  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X23_Y20_N10 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52934|cin     ;
+;   5.369  ;   0.080 ; FR ; CELL ; 1      ; LCCOMB_X23_Y20_N10 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52934|cout    ;
+;   5.369  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X23_Y20_N12 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52933|cin     ;
+;   5.449  ;   0.080 ; RF ; CELL ; 1      ; LCCOMB_X23_Y20_N12 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52933|cout    ;
+;   5.449  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X23_Y20_N14 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52932|cin     ;
+;   5.623  ;   0.174 ; FR ; CELL ; 1      ; LCCOMB_X23_Y20_N14 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52932|cout    ;
+;   5.623  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X23_Y20_N16 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52931|cin     ;
+;   5.703  ;   0.080 ; RF ; CELL ; 1      ; LCCOMB_X23_Y20_N16 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52931|cout    ;
+;   5.703  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X23_Y20_N18 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52930|cin     ;
+;   5.783  ;   0.080 ; FR ; CELL ; 1      ; LCCOMB_X23_Y20_N18 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52930|cout    ;
+;   5.783  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X23_Y20_N20 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52929|cin     ;
+;   6.241  ;   0.458 ; RR ; CELL ; 4      ; LCCOMB_X23_Y20_N20 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52929|combout ;
+;   7.663  ;   1.422 ; RR ; IC   ; 2      ; LCCOMB_X24_Y19_N12 ; low_pass|modgen_add_11|ix2247z52933|dataa                    ;
+;   8.180  ;   0.517 ; RR ; CELL ; 1      ; LCCOMB_X24_Y19_N12 ; low_pass|modgen_add_11|ix2247z52933|cout                     ;
+;   8.180  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X24_Y19_N14 ; low_pass|modgen_add_11|ix2247z52932|cin                      ;
+;   8.354  ;   0.174 ; RF ; CELL ; 1      ; LCCOMB_X24_Y19_N14 ; low_pass|modgen_add_11|ix2247z52932|cout                     ;
+;   8.354  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X24_Y19_N16 ; low_pass|modgen_add_11|ix2247z52931|cin                      ;
+;   8.434  ;   0.080 ; FR ; CELL ; 1      ; LCCOMB_X24_Y19_N16 ; low_pass|modgen_add_11|ix2247z52931|cout                     ;
+;   8.434  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X24_Y19_N18 ; low_pass|modgen_add_11|ix2247z52930|cin                      ;
+;   8.892  ;   0.458 ; RR ; CELL ; 1      ; LCCOMB_X24_Y19_N18 ; low_pass|modgen_add_11|ix2247z52930|combout                  ;
+;   9.423  ;   0.531 ; RR ; IC   ; 2      ; LCCOMB_X25_Y19_N18 ; low_pass|modgen_add_12|ix2247z52930|datab                    ;
+;   9.918  ;   0.495 ; RF ; CELL ; 1      ; LCCOMB_X25_Y19_N18 ; low_pass|modgen_add_12|ix2247z52930|cout                     ;
+;   9.918  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X25_Y19_N20 ; low_pass|modgen_add_12|ix2247z52929|cin                      ;
+;   10.376 ;   0.458 ; FF ; CELL ; 1      ; LCCOMB_X25_Y19_N20 ; low_pass|modgen_add_12|ix2247z52929|combout                  ;
+;   11.794 ;   1.418 ; FF ; IC   ; 2      ; LCCOMB_X28_Y19_N20 ; low_pass|modgen_add_13|ix2247z52929|dataa                    ;
+;   12.311 ;   0.517 ; FF ; CELL ; 1      ; LCCOMB_X28_Y19_N20 ; low_pass|modgen_add_13|ix2247z52929|cout                     ;
+;   12.311 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X28_Y19_N22 ; low_pass|modgen_add_13|ix2247z52928|cin                      ;
+;   12.769 ;   0.458 ; FF ; CELL ; 1      ; LCCOMB_X28_Y19_N22 ; low_pass|modgen_add_13|ix2247z52928|combout                  ;
+;   13.610 ;   0.841 ; FF ; IC   ; 2      ; LCCOMB_X27_Y19_N22 ; low_pass|modgen_add_14|ix2247z52928|dataa                    ;
+;   14.127 ;   0.517 ; FR ; CELL ; 1      ; LCCOMB_X27_Y19_N22 ; low_pass|modgen_add_14|ix2247z52928|cout                     ;
+;   14.127 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X27_Y19_N24 ; low_pass|modgen_add_14|ix2247z52927|cin                      ;
+;   14.207 ;   0.080 ; RF ; CELL ; 1      ; LCCOMB_X27_Y19_N24 ; low_pass|modgen_add_14|ix2247z52927|cout                     ;
+;   14.207 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X27_Y19_N26 ; low_pass|modgen_add_14|ix2247z52926|cin                      ;
+;   14.665 ;   0.458 ; FF ; CELL ; 1      ; LCCOMB_X27_Y19_N26 ; low_pass|modgen_add_14|ix2247z52926|combout                  ;
+;   15.815 ;   1.150 ; FF ; IC   ; 2      ; LCCOMB_X27_Y21_N26 ; low_pass|modgen_add_15|ix2247z52926|datab                    ;
+;   16.310 ;   0.495 ; FR ; CELL ; 1      ; LCCOMB_X27_Y21_N26 ; low_pass|modgen_add_15|ix2247z52926|cout                     ;
+;   16.310 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X27_Y21_N28 ; low_pass|modgen_add_15|ix2247z52925|cin                      ;
+;   16.768 ;   0.458 ; RR ; CELL ; 1      ; LCCOMB_X27_Y21_N28 ; low_pass|modgen_add_15|ix2247z52925|combout                  ;
+;   17.910 ;   1.142 ; RR ; IC   ; 1      ; LCFF_X27_Y20_N5    ; reg_audio_out_14_|sdata                                      ;
+;   18.323 ;   0.413 ; RR ; CELL ; 1      ; LCFF_X27_Y20_N5    ; audio_out_14_                                                ;
++----------+---------+----+------+--------+--------------------+--------------------------------------------------------------+
+
++--------------------------------------------------------------------------------+
+; Data Required Path                                                             ;
++---------+---------+----+------+--------+-----------------+---------------------+
+; Total   ; Incr    ; RF ; Type ; Fanout ; Location        ; Element             ;
++---------+---------+----+------+--------+-----------------+---------------------+
+; 1.000   ; 1.000   ;    ;      ;        ;                 ; latch edge time     ;
+; 4.202   ; 3.202   ;    ;      ;        ;                 ; clock path          ;
+;   4.202 ;   3.202 ; R  ;      ;        ;                 ; clock network delay ;
+; 4.240   ; 0.038   ;    ; uTsu ; 1      ; LCFF_X27_Y20_N5 ; audio_out_14_       ;
++---------+---------+----+------+--------+-----------------+---------------------+
+
+
+Path #5: Setup slack is -14.076 (VIOLATED)
+===============================================================================
++-----------------------------------------+
+; Path Summary                            ;
++--------------------+--------------------+
+; Property           ; Value              ;
++--------------------+--------------------+
+; From Node          ; low_pass_in_1_     ;
+; To Node            ; audio_out_14_      ;
+; Launch Clock       ; aud_adclrck_dup0   ;
+; Latch Clock        ; aud_adclrck_dup0   ;
+; Data Arrival Time  ; 18.316             ;
+; Data Required Time ; 4.240              ;
+; Slack              ; -14.076 (VIOLATED) ;
++--------------------+--------------------+
+
++---------------------------------------------------------------------------------------+
+; Statistics                                                                            ;
++---------------------------+--------+-------+-------------+------------+-------+-------+
+; Property                  ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++---------------------------+--------+-------+-------------+------------+-------+-------+
+; Setup Relationship        ; 1.000  ;       ;             ;            ;       ;       ;
+; Clock Skew                ; 0.002  ;       ;             ;            ;       ;       ;
+; Data Delay                ; 15.116 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels    ;        ; 24    ;             ;            ;       ;       ;
+; Physical Delays           ;        ;       ;             ;            ;       ;       ;
+;  Arrival Path             ;        ;       ;             ;            ;       ;       ;
+;   Clock                   ;        ;       ;             ;            ;       ;       ;
+;    Clock Network (Lumped) ;        ; 1     ; 3.200       ; 100        ; 3.200 ; 3.200 ;
+;   Data                    ;        ;       ;             ;            ;       ;       ;
+;    IC                     ;        ; 25    ; 7.472       ; 49         ; 0.000 ; 1.422 ;
+;    Cell                   ;        ; 26    ; 7.367       ; 48         ; 0.000 ; 0.517 ;
+;    uTco                   ;        ; 1     ; 0.277       ; 1          ; 0.277 ; 0.277 ;
+;  Required Path            ;        ;       ;             ;            ;       ;       ;
+;   Clock                   ;        ;       ;             ;            ;       ;       ;
+;    Clock Network (Lumped) ;        ; 1     ; 3.202       ; 100        ; 3.202 ; 3.202 ;
++---------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                           ;
++----------+---------+----+------+--------+--------------------+--------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                      ;
++----------+---------+----+------+--------+--------------------+--------------------------------------------------------------+
+; 0.000    ; 0.000   ;    ;      ;        ;                    ; launch edge time                                             ;
+; 3.200    ; 3.200   ;    ;      ;        ;                    ; clock path                                                   ;
+;   3.200  ;   3.200 ; R  ;      ;        ;                    ; clock network delay                                          ;
+; 18.316   ; 15.116  ;    ;      ;        ;                    ; data path                                                    ;
+;   3.477  ;   0.277 ;    ; uTco ; 1      ; LCFF_X23_Y18_N3    ; low_pass_in_1_                                               ;
+;   3.477  ;   0.000 ; RR ; CELL ; 11     ; LCFF_X23_Y18_N3    ; reg_low_pass_in_1_|regout                                    ;
+;   4.452  ;   0.975 ; RR ; IC   ; 1      ; LCCOMB_X23_Y20_N0  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52939|dataa   ;
+;   4.969  ;   0.517 ; RR ; CELL ; 1      ; LCCOMB_X23_Y20_N0  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52939|cout    ;
+;   4.969  ;   0.000 ; RR ; IC   ; 1      ; LCCOMB_X23_Y20_N2  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52938|cin     ;
+;   5.049  ;   0.080 ; RF ; CELL ; 1      ; LCCOMB_X23_Y20_N2  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52938|cout    ;
+;   5.049  ;   0.000 ; FF ; IC   ; 1      ; LCCOMB_X23_Y20_N4  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52937|cin     ;
+;   5.129  ;   0.080 ; FR ; CELL ; 1      ; LCCOMB_X23_Y20_N4  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52937|cout    ;
+;   5.129  ;   0.000 ; RR ; IC   ; 1      ; LCCOMB_X23_Y20_N6  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52936|cin     ;
+;   5.209  ;   0.080 ; RF ; CELL ; 1      ; LCCOMB_X23_Y20_N6  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52936|cout    ;
+;   5.209  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X23_Y20_N8  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52935|cin     ;
+;   5.289  ;   0.080 ; FR ; CELL ; 1      ; LCCOMB_X23_Y20_N8  ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52935|cout    ;
+;   5.289  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X23_Y20_N10 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52934|cin     ;
+;   5.369  ;   0.080 ; RF ; CELL ; 1      ; LCCOMB_X23_Y20_N10 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52934|cout    ;
+;   5.369  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X23_Y20_N12 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52933|cin     ;
+;   5.449  ;   0.080 ; FR ; CELL ; 1      ; LCCOMB_X23_Y20_N12 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52933|cout    ;
+;   5.449  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X23_Y20_N14 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52932|cin     ;
+;   5.623  ;   0.174 ; RF ; CELL ; 1      ; LCCOMB_X23_Y20_N14 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52932|cout    ;
+;   5.623  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X23_Y20_N16 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52931|cin     ;
+;   5.703  ;   0.080 ; FR ; CELL ; 1      ; LCCOMB_X23_Y20_N16 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52931|cout    ;
+;   5.703  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X23_Y20_N18 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52930|cin     ;
+;   5.783  ;   0.080 ; RF ; CELL ; 1      ; LCCOMB_X23_Y20_N18 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52930|cout    ;
+;   5.783  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X23_Y20_N20 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52929|cin     ;
+;   6.241  ;   0.458 ; FF ; CELL ; 4      ; LCCOMB_X23_Y20_N20 ; low_pass|prod_1__mults19_1|modgen_add_1_ix3244z52929|combout ;
+;   7.663  ;   1.422 ; FF ; IC   ; 2      ; LCCOMB_X24_Y19_N12 ; low_pass|modgen_add_11|ix2247z52933|dataa                    ;
+;   8.180  ;   0.517 ; FF ; CELL ; 1      ; LCCOMB_X24_Y19_N12 ; low_pass|modgen_add_11|ix2247z52933|cout                     ;
+;   8.180  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X24_Y19_N14 ; low_pass|modgen_add_11|ix2247z52932|cin                      ;
+;   8.354  ;   0.174 ; FR ; CELL ; 1      ; LCCOMB_X24_Y19_N14 ; low_pass|modgen_add_11|ix2247z52932|cout                     ;
+;   8.354  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X24_Y19_N16 ; low_pass|modgen_add_11|ix2247z52931|cin                      ;
+;   8.812  ;   0.458 ; RR ; CELL ; 1      ; LCCOMB_X24_Y19_N16 ; low_pass|modgen_add_11|ix2247z52931|combout                  ;
+;   9.336  ;   0.524 ; RR ; IC   ; 2      ; LCCOMB_X25_Y19_N16 ; low_pass|modgen_add_12|ix2247z52931|datab                    ;
+;   9.831  ;   0.495 ; RR ; CELL ; 1      ; LCCOMB_X25_Y19_N16 ; low_pass|modgen_add_12|ix2247z52931|cout                     ;
+;   9.831  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X25_Y19_N18 ; low_pass|modgen_add_12|ix2247z52930|cin                      ;
+;   9.911  ;   0.080 ; RF ; CELL ; 1      ; LCCOMB_X25_Y19_N18 ; low_pass|modgen_add_12|ix2247z52930|cout                     ;
+;   9.911  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X25_Y19_N20 ; low_pass|modgen_add_12|ix2247z52929|cin                      ;
+;   10.369 ;   0.458 ; FF ; CELL ; 1      ; LCCOMB_X25_Y19_N20 ; low_pass|modgen_add_12|ix2247z52929|combout                  ;
+;   11.787 ;   1.418 ; FF ; IC   ; 2      ; LCCOMB_X28_Y19_N20 ; low_pass|modgen_add_13|ix2247z52929|dataa                    ;
+;   12.304 ;   0.517 ; FF ; CELL ; 1      ; LCCOMB_X28_Y19_N20 ; low_pass|modgen_add_13|ix2247z52929|cout                     ;
+;   12.304 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X28_Y19_N22 ; low_pass|modgen_add_13|ix2247z52928|cin                      ;
+;   12.762 ;   0.458 ; FF ; CELL ; 1      ; LCCOMB_X28_Y19_N22 ; low_pass|modgen_add_13|ix2247z52928|combout                  ;
+;   13.603 ;   0.841 ; FF ; IC   ; 2      ; LCCOMB_X27_Y19_N22 ; low_pass|modgen_add_14|ix2247z52928|dataa                    ;
+;   14.120 ;   0.517 ; FR ; CELL ; 1      ; LCCOMB_X27_Y19_N22 ; low_pass|modgen_add_14|ix2247z52928|cout                     ;
+;   14.120 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X27_Y19_N24 ; low_pass|modgen_add_14|ix2247z52927|cin                      ;
+;   14.200 ;   0.080 ; RF ; CELL ; 1      ; LCCOMB_X27_Y19_N24 ; low_pass|modgen_add_14|ix2247z52927|cout                     ;
+;   14.200 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X27_Y19_N26 ; low_pass|modgen_add_14|ix2247z52926|cin                      ;
+;   14.658 ;   0.458 ; FF ; CELL ; 1      ; LCCOMB_X27_Y19_N26 ; low_pass|modgen_add_14|ix2247z52926|combout                  ;
+;   15.808 ;   1.150 ; FF ; IC   ; 2      ; LCCOMB_X27_Y21_N26 ; low_pass|modgen_add_15|ix2247z52926|datab                    ;
+;   16.303 ;   0.495 ; FR ; CELL ; 1      ; LCCOMB_X27_Y21_N26 ; low_pass|modgen_add_15|ix2247z52926|cout                     ;
+;   16.303 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X27_Y21_N28 ; low_pass|modgen_add_15|ix2247z52925|cin                      ;
+;   16.761 ;   0.458 ; RR ; CELL ; 1      ; LCCOMB_X27_Y21_N28 ; low_pass|modgen_add_15|ix2247z52925|combout                  ;
+;   17.903 ;   1.142 ; RR ; IC   ; 1      ; LCFF_X27_Y20_N5    ; reg_audio_out_14_|sdata                                      ;
+;   18.316 ;   0.413 ; RR ; CELL ; 1      ; LCFF_X27_Y20_N5    ; audio_out_14_                                                ;
++----------+---------+----+------+--------+--------------------+--------------------------------------------------------------+
+
++--------------------------------------------------------------------------------+
+; Data Required Path                                                             ;
++---------+---------+----+------+--------+-----------------+---------------------+
+; Total   ; Incr    ; RF ; Type ; Fanout ; Location        ; Element             ;
++---------+---------+----+------+--------+-----------------+---------------------+
+; 1.000   ; 1.000   ;    ;      ;        ;                 ; latch edge time     ;
+; 4.202   ; 3.202   ;    ;      ;        ;                 ; clock path          ;
+;   4.202 ;   3.202 ; R  ;      ;        ;                 ; clock network delay ;
+; 4.240   ; 0.038   ;    ; uTsu ; 1      ; LCFF_X27_Y20_N5 ; audio_out_14_       ;
++---------+---------+----+------+--------+-----------------+---------------------+
+
+

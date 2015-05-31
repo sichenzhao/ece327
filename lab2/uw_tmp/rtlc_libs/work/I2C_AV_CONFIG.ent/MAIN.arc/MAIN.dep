@@ -1,0 +1,6 @@
+1433101690.966000
+work	P:\ece327\lab2\uw_tmp\rtlc_libs\work	I2C_AV_CONFIG	I2C_AV_CONFIG	0
+work	P:\ece327\lab2\uw_tmp\rtlc_libs\work	I2C_CTRL	I2C_CTRL	0
+ieee	C:\PROGRA~2\MENTOR~1\PRECIS~1.47\Mgc_home\pkgs\rtlc_psr\rtlc\IEEE	STD_LOGIC_1164	STD_LOGIC_1164	2
+ieee	C:\PROGRA~2\MENTOR~1\PRECIS~1.47\Mgc_home\pkgs\rtlc_psr\rtlc\IEEE	NUMERIC_STD	NUMERIC_STD	2
+work	P:\ece327\lab2\uw_tmp\rtlc_libs\work	MAIN	I2C_CTRL	1

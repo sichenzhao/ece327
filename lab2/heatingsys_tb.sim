@@ -1,0 +1,6 @@
+add wave i_des_temp
+add wave i_cur_temp
+add wave i_reset
+add wave i_heatmode -radix unsigned
+add wave i_clock
+run 1000 ns

@@ -1,0 +1,4 @@
+work "P:/ece327/lab2/fir_synth_pkg.vhd"
+work "P:/ece327/lab2/fir_lib.vhd"
+work "P:/ece327/lab2/fir.vhd"
+work "P:/ece327/lab2/fir_top.vhd"

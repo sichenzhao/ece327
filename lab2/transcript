@@ -1,0 +1,37 @@
+# //  ModelSim SE-64 10.1 Dec  5 2011 Linux 2.6.18-404.el5
+# //
+# //  Copyright 1991-2011 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# vsim -do uw_tmp/uw-sim.tcl -lib work-msim -t 1ns -wlf uw_tmp/vsim.wlf fir_tb(main) 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.fir_synth_pkg(body)
+# Loading work.fir_tb(main)#1
+# Loading work.fir(avg)#1
+add wave -position end  sim:/fir_tb/i_data
+# do uw_tmp/uw-sim.tcl 
+#  
+add wave -position end  sim:/fir_tb/o_data
+add wave -position end  sim:/fir_tb/test/sum2
+add wave -position end  sim:/fir_tb/test/sum3
+add wave -position end  sim:/fir_tb/test/sum4
+run -all
+add wave -position end  sim:/fir_tb/test/prod1
+add wave -position end  sim:/fir_tb/test/prod2
+add wave -position end  sim:/fir_tb/test/prod3
+add wave -position end  sim:/fir_tb/test/prod4
+# Break key hit 
+# Simulation stop requested.
+run -aa
+# Unknown option: aa
+# ** Error: (vsim-4005) Invalid argument '-aa'.
+# Usage: run [<timesteps> [<time_units>]] | -all | -continue | -next | -step | -over | -out | -init | -final
+run -all

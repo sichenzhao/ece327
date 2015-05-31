@@ -1,0 +1,96 @@
+                   Clock Frequency Report
+
+	Domain                  Clock Name                            Min Period (Freq)
+	------                  ----------                            -----------------
+	ClockDomain2            u_audio_dac_reg_lrck_1x/regout        7.211 (138.677 MHz)  
+	ClockDomain1            aud_bclk                              1.381 (724.113 MHz)  
+	ClockDomain0            clock_27                              5.791 (172.682 MHz) *
+
+*  DLL/PLL clocks present in this clock domain. Estimated frequencies are shown.
+-- Device: Altera - Cyclone II : EP2C35F672C : 7
+-- CTE report summary..
+                  CTE Report Summary
+
+End CTE Report Summary ..... CPU Time Used: 0 sec.
+
+Setup Slack Path Summary
+
+               Data                                                                                                                      Data
+       Setup   Path    Source    Dest.                                                                                                   End 
+Index  Slack   Delay   Clock     Clock                          Data Start Pin                                  Data End Pin             Edge
+-----  ------  -----  --------  --------  ----------------------------------------------------------  ---------------------------------  ----
+  1    -1.791  5.695  clock_27  clock_27  u_i2c_av_config/u0/modgen_counter_sd_counter/reg_q(3)/clk   u_i2c_av_config/u0/reg_sdo/datain  Rise
+  2    -1.768  5.672  clock_27  clock_27  u_i2c_av_config/u0/modgen_counter_sd_counter/reg_q(2)/clk   u_i2c_av_config/u0/reg_sdo/datain  Rise
+  3    -1.484  5.388  clock_27  clock_27  u_i2c_av_config/u0/modgen_counter_sd_counter/reg_q(4)/clk   u_i2c_av_config/u0/reg_sdo/datain  Rise
+  4    -1.324  5.228  clock_27  clock_27  u_i2c_av_config/u0/modgen_counter_sd_counter/reg_q(1)/clk   u_i2c_av_config/u0/reg_sdo/datain  Rise
+  5    -1.218  4.460  clock_27  clock_27  u_i2c_av_config/u0/modgen_counter_sd_counter/reg_q(5)/clk   u_i2c_av_config/u0/reg_sdo/ena     Rise
+  6    -1.200  5.104  clock_27  clock_27  u_i2c_av_config/u0/modgen_counter_sd_counter/reg_q(0)/clk   u_i2c_av_config/u0/reg_sdo/datain  Rise
+  7     0.058  3.184  clock_27  clock_27  u_i2c_av_config/modgen_counter_m_i2c_clk_div/reg_q(5)/clk   u_i2c_av_config/u0/reg_sdo/ena     Rise
+  8     0.081  3.161  clock_27  clock_27  u_i2c_av_config/modgen_counter_m_i2c_clk_div/reg_q(4)/clk   u_i2c_av_config/u0/reg_sdo/ena     Rise
+  9     0.261  2.981  clock_27  clock_27  u_i2c_av_config/modgen_counter_m_i2c_clk_div/reg_q(11)/clk  u_i2c_av_config/u0/reg_sdo/ena     Rise
+ 10     0.281  2.961  clock_27  clock_27  u_i2c_av_config/modgen_counter_m_i2c_clk_div/reg_q(3)/clk   u_i2c_av_config/u0/reg_sdo/ena     Rise
+
+-- Device: Altera - Cyclone II : EP2C35F672C : 7
+-- CTE report summary..
+                  CTE Report Summary
+
+Analyzing setup constraint violations 
+End CTE Report Summary ..... CPU Time Used: 0 sec.
+-- Device: Altera - Cyclone II : EP2C35F672C : 7
+-- CTE report timing..
+                  CTE Path Report
+
+
+Critical path #1, (path slack = -1.791):
+
+SOURCE CLOCK: name: clock_27 period: 4.000000
+     Times are relative to the 1st rising edge
+  DEST CLOCK: name: clock_27 period: 4.000000
+     Times are relative to the 2nd rising edge
+
+NAME                                                            GATE                     DELAY    ARRIVAL DIR  FANOUT
+u_i2c_av_config/u0/modgen_counter_sd_counter/reg_q(3)/clk    cycloneii_lcell_ff                   0.000   up
+u_i2c_av_config/u0/modgen_counter_sd_counter/reg_q(3)/regout cycloneii_lcell_ff         0.000     0.000   up
+u_i2c_av_config/u0/modgen_counter_sd_counter/nx56256z5       (net)                      0.530                  14
+u_i2c_av_config/u0/ix44942z52927/dataa                       cycloneii_lcell_comb                 0.530   up
+u_i2c_av_config/u0/ix44942z52927/combout                     cycloneii_lcell_comb       0.545     1.075   up
+u_i2c_av_config/u0/nx44942z5                                 (net)                      0.330                   4
+u_i2c_av_config/u0/ix22137z52925/datac                       cycloneii_lcell_comb                 1.405   up
+u_i2c_av_config/u0/ix22137z52925/combout                     cycloneii_lcell_comb       0.322     1.727   up
+u_i2c_av_config/u0/sdo_5n5s2f1(0)                            (net)                      0.270                   1
+u_i2c_av_config/u0/sdo_sub5_5i2/ix41961z52928/dataa          cycloneii_lcell_comb                 1.997   up
+u_i2c_av_config/u0/sdo_sub5_5i2/ix41961z52928/cout           cycloneii_lcell_comb       0.517     2.514   up
+u_i2c_av_config/u0/sdo_sub5_5i2/nx41961z11                   (net)                *     0.000                   1
+u_i2c_av_config/u0/sdo_sub5_5i2/ix41961z52927/cin            cycloneii_lcell_comb                 2.514   up
+u_i2c_av_config/u0/sdo_sub5_5i2/ix41961z52927/cout           cycloneii_lcell_comb       0.080     2.594   up
+u_i2c_av_config/u0/sdo_sub5_5i2/nx41961z8                    (net)                *     0.000                   1
+u_i2c_av_config/u0/sdo_sub5_5i2/ix41961z52926/cin            cycloneii_lcell_comb                 2.594   up
+u_i2c_av_config/u0/sdo_sub5_5i2/ix41961z52926/combout        cycloneii_lcell_comb       0.000     2.594   up
+u_i2c_av_config/u0/sdo_sub5_5i2/nx39967z1                    (net)                *     0.310                   3
+u_i2c_av_config/u0/ix41315z52931/dataa                       cycloneii_lcell_comb                 2.904   up
+u_i2c_av_config/u0/ix41315z52931/combout                     cycloneii_lcell_comb       0.545     3.449   up
+u_i2c_av_config/u0/nx41315z9                                 (net)                *     0.270                   1
+u_i2c_av_config/u0/ix41315z52930/datac                       cycloneii_lcell_comb                 3.719   up
+u_i2c_av_config/u0/ix41315z52930/combout                     cycloneii_lcell_comb       0.322     4.041   up
+u_i2c_av_config/u0/nx41315z8                                 (net)                *     0.270                   1
+u_i2c_av_config/u0/ix41315z52929/datac                       cycloneii_lcell_comb                 4.311   up
+u_i2c_av_config/u0/ix41315z52929/combout                     cycloneii_lcell_comb       0.322     4.633   up
+u_i2c_av_config/u0/nx41315z7                                 (net)                *     0.270                   1
+u_i2c_av_config/u0/ix41315z52923/datab                       cycloneii_lcell_comb                 4.903   up
+u_i2c_av_config/u0/ix41315z52923/combout                     cycloneii_lcell_comb       0.522     5.425   up
+u_i2c_av_config/u0/nx41315z1                                 (net)                *     0.270                   1
+u_i2c_av_config/u0/reg_sdo/datain                            cycloneii_lcell_ff                   5.695   up
+
+		Initial edge separation:      4.000
+		Source clock delay:      -    1.383
+		Dest clock delay:        +    1.383
+		                        -----------
+		Edge separation:              4.000
+		Setup constraint:        -    0.096
+		                        -----------
+		Data required time:           3.904
+		Data arrival time:       -    5.695   ( 55.75% cell delay, 44.25% net delay )
+		                        -----------
+		Slack (VIOLATED):            -1.791
+
+End CTE Analysis ..... CPU Time Used: 0 sec.
